@@ -11,6 +11,7 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 
 const app = express()
+const port = process.env.PORT || 3000  //process.env.PORT is for the heroku/render server, while 3000 is for our local machine
 
 app.set('view engine', 'hbs')  //for dynamic website templates. create a views directory in the root of the project, and then create .hbs files replacing static .html files
 
@@ -78,7 +79,7 @@ app.get('/weather', (req, res) => {
                     }
                      res.send({
                         Theweather:weatherdata,
-                        location:req.query.address
+                        location:req.query.address,
                     })
             })
     }) 
@@ -129,6 +130,6 @@ app.get('*', (req, res)=> {
      
 
 
-app.listen(3000, () => {
-    console.log('server is running on port 3000.')
+app.listen(port, () => {
+    console.log(`server is running on port ${port}`)
 })

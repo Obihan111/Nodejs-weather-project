@@ -64,7 +64,8 @@ const weather = (lat, lon, callback) => {
             callback(undefined, {
                 location:body.location.name,
                 Temperature:body.current.temperature,
-                Humidity:body.current.humidity})
+                Humidity:body.current.humidity,
+                Country:body.location.country})
         }
     })
 
